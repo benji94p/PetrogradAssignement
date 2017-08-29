@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrograd</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+</head>
+
+<body>
+        <div class="top">
+        <img id="logo" src="fakelogo.png">
+        <nav class="navigation">
+			<a href="index.html">Home</a>
+			<a href="#">About</a>
+			<a href="#">Menu</a>
+			<a href="#">Reserve</a>
+		</nav>
+        </div>
+
+        <div class="containergrid">
+            <div class="heroe">
+                <h1>Welcome to Petrograd Restaurant</h1>
+            </div>
+
+            <main class="container">
+
+            <div></div>
+            <section></section>
+            <template class="product">
+               <article>
+                    <img class="image" src="">
+                    <h1 class='name'>hi</h1>
+                    <p class="shortDescription">Short Description</p>
+                    <p class="price">Price</p>
+                    <p class="alcohol">Alcohol</p>
+                    <p class="allergens">Allergic</p>
+                    <p class="soldOut">Sold Out Status</p>
+                    <p class="discount">Discount Price</p>
+                    <p class="vegetarian">Vegetarian Status</p>
+                </article>
+            </template>
+            <div></div>
+
+            </main>
+
+        </div>
+
+
+    <script>
+        let productlist_link = "http://kea-alt-del.dk/t5/api/productlist";
+        let image_path = "http://kea-alt-del.dk/t5/site/imgs/small/";
+        let templateElement = document.querySelector('.product').content;
+
+        function getData(link) {
+            fetch(link).then(function(response) {
+                return response.json();
+            }).then(function(json) {
+                return show(json);
+            });
+        }
+
+        function show(json) {
+            json.forEach(function(product) {
+                let clone = templateElement.cloneNode(true);
+                clone.querySelector('.name').textContent = product.name;
+                clone.querySelector('.price').textContent = product.price + " DKK";
+                clone.querySelector('.image').src = image_path + product.image + "-sm.jpg";
+                let section = document.querySelector('section');
+                section.appendChild(clone);
+            });
+        }
+        getData(productlist_link);
+
+    </script>
+</body>
+
+</html>

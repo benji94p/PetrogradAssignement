@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+
+}
+
+/*NAVIGATION*/
+.navigation {
+    display: flex;
+    justify-content: space-around;
+    grid-column-start: 2;
+}
+.top {
+    background-color: #5F0044;
+    position: fixed;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 70px;
+}
+.navigation a {
+    color: aliceblue;
+    text-decoration: none;
+    padding-top: 20px;
+    font-family: 'Indie Flower', cursive;
+}
+.navigation a:hover {
+    color: aqua;
+}
+
+#logo {
+    max-height: 70px;
+}
+
+img {
+    max-width: 380px;
+}
+
+/* HEROE IMAGE */
+
+.containergrid {
+    display: grid;
+    grid-template-rows: 100% 1fr;
+}
+
+.heroe {
+    background-image: url(Heroeimage.jpeg);
+    grid-row-start: 1;
+    grid-row-end: 2;
+    height: 500px;
+    margin-bottom: 50px;
+
+}
+
+.heroe h1 {
+    text-align: center;
+    margin-top: 210px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 60px;
+
+}
+.container {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+/*CARDS LAYOUT */
+
+
+section {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
