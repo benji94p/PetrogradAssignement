@@ -25,7 +25,7 @@ function createCategory(cat){
     let cloneCategorie = catTemplate.cloneNode(true);
     cloneCategorie.querySelector('h1').textContent = cat;
     cloneCategorie.querySelector(".category").id = cat;
-    cloneDiv.querySelector(".section1").appendChild(cloneCategorie);
+    cloneDiv.appendChild(cloneCategorie);
 }
 getCategories(categories_link);
 
@@ -48,6 +48,8 @@ function createProduct (prod) {
     let cloneProduct = productTemplate.cloneNode(true);
 
     //GENERIC IMPLEMENT
+
+    cloneProduct.querySelector('.image').src=image_path+prod.image+"-sm.jpg";
     cloneProduct.querySelector('h1').textContent = prod.name;
     cloneProduct.querySelector('.shortDescription').textContent = prod.shortdescription;
 
@@ -58,7 +60,7 @@ function createProduct (prod) {
       //ALCOHOL
 
     if (prod.alcohol > 0) {
-        cloneProduct.querySelector(".alcohol").style.display = "";
+        cloneProduct.querySelector(".alcohol").style.display = "block";
         cloneProduct.querySelector('.alcohol').textContent = "Alcohol: "+ prod.alcohol+ "%";
 
     }
@@ -73,8 +75,19 @@ function createProduct (prod) {
 
     //DISCOUNT PRICE
 
+    if (prod.discount > 0) {
+        cloneProduct.querySelector(".discount").style.display ="block";
+        let newPrice = prod.price - (prod.price*prod.discount/100);
+        cloneProduct.querySelector(".reduction").style.display = "block";
+        cloneProduct.querySelector(".reduction").textContent = prod.discount + " %";
+
+        cloneProduct.querySelector('.price').classList.add("discountbar");
+        cloneProduct.querySelector('.discount').textContent = newPrice + " kr";
+
+    }
+
     //VEGETERIAN STATUS
-    cloneDiv.querySelector(".section2").appendChild(cloneProduct);
+    cloneDiv.appendChild(cloneProduct);
 }
 getProduct(productlist_link);
 

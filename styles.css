@@ -33,7 +33,7 @@ body {
     max-height: 70px;
 }
 
-section img {
+.cloned img {
     width: 20vw;
 }
 
@@ -76,7 +76,7 @@ section img {
 /*CARDS LAYOUT */
 
 @media only screen and (min-device-width: 1224px) {
-    section {
+    .cloned {
     padding-right: 30px;
     padding-left: 30px;
     display: grid;
@@ -90,7 +90,7 @@ section img {
 
 
 @media (max-width: 1200px) {
-    section {
+    .cloned {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
@@ -99,14 +99,14 @@ section img {
 
 }
 
-section img {
+.cloned img {
     width: 45vw;
 }
 
 }
 
 @media (max-width: 500px) {
-    section {
+    .cloned {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 20px;
@@ -115,7 +115,7 @@ section img {
 
 }
 
-section img {
+.cloned img {
     width: 80vw;
 }
 }
@@ -136,7 +136,9 @@ article {
     font-size: 18px;
     padding-bottom: 40px;
 }
-
+.discountbar {
+    text-decoration: line-through;
+}
 .name {
 
 }
@@ -157,5 +159,8 @@ article {
     display: none;
 }
 .vegetarian {
+    display: none;
+}
+.reduction {
     display: none;
 }

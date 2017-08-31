@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Petrograd</title>
+		<link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+		<nav>
+			<a href="index.html">Petrograd</a>
+			<a href="#">About</a>
+			<a href="#">Menu</a>
+			<a href="#">Reserve</a>
+		</nav>
+		<header>
+			<img class="logo" src="images/logo.png">
+		</header>
+		
+        
+		<main></main>
+        
+        <div class="modal hide">
+            <article class="modal-content">
+                <h3 class="modal-name">data-name</h3>
+                <img class="modal-image" src="data-image" alt="data-caption">
+                <p class="modal-description">data-longdescription</p>
+                <h4 class="modal-price">data-price</h4>
+            </article>
+        </div>
+        
+        
+        <template class="categoryTemplate"> 
+            <section class="category">
+                <h1>Heres a cat</h1>
+            </section>
+        </template>
+        
+		
+		<template class="productTemplate">
+			<article class="list-product">
+				<a href="../">
+					<img class="product-small-img" src="data-small-img" alt="data-caption">
+				</a>
+				<h3 class="name">data-name</h3>
+				<p class="category">data-category</p>
+				<h4 class="price"><span>data-price</span> kr.</h4>
+                <p class="alc">Contains alcohol</p>
+				<button>details</button>
+			</article>
+		</template>		
+		
+        
+		<script>
+			let productlist_link = "http://kea-alt-del.dk/t5/api/productlist";
+			let categories_link = "http://kea-alt-del.dk/t5/api/categories";
+			let product_link = "http://kea-alt-del.dk/t5/api/product?id=";
+            let image_path = "http://kea-alt-del.dk/t5/site/imgs/";
+			let productTemplate = document.querySelector('.productTemplate').content;
+            let categoryTemplate = document.querySelector('.categoryTemplate').content;
+            let main = document.querySelector('main');
+            let modal = document.querySelector('.modal');
+            modal.addEventListener('click', function(){
+                modal.classList.add('hide');
+            });
+            
+            
+             function getCategories(catlink){
+                //console.log(catlink);
+                 fetch(catlink)
+                     .then(function(response){
+                    return response.json();
+                })
+                     .then(function(data){
+                     //console.log(data);
+                    data.forEach(createCategory);
+                     //now we can show products
+                     getData(productlist_link);     
+                });
+            }
+            
+            function createCategory(cat){
+                console.log(cat);
+                let clone = categoryTemplate.cloneNode(true);
+                clone.querySelector('h1').textContent = cat;
+                clone.querySelector('section.category').id = cat;
+                main.appendChild(clone);
+            }
+            getCategories(categories_link);
+            
+    
+            function getData(link){
+                fetch(link).then(function(response){
+                    return response.json();
+                }).then(function(json){
+                    return show(json);
+                });
+            }            
+            
+            function show(json){
+                json.forEach(function(product){
+                    //console.log(product);
+                    let clone = productTemplate.cloneNode(true);
+                    clone.querySelector('.name').textContent=product.name;
+                    clone.querySelector('.category').textContent=product.category;
+                    clone.querySelector('.price span').textContent=product.price;
+                    
+                    let button = clone.querySelector('button');
+                    button.addEventListener('click',function(){
+                        let link = product_link+product.id;
+                         fetch(link).then(function(response){
+                        return response.json();
+                         }).then(function(json){
+                        return showDetails(json);
+                });
+                    })
+                    
+                    
+                    clone.querySelector('.product-small-img').src=image_path+"small/"+product.image+"-sm.jpg";
+                    
+                    if( !product.alcohol){
+                        clone.querySelector('.alc').classList.add('hidden');
+                    }
+                    
+                    if(product.discount){
+                        //console.log("I'm cheeper");
+                        let newPrice = product.price - (product.price * product.discount / 100);
+                        //console.log(product.price, product.discount, newPrice);
+                        //1. cross out the old price
+                        clone.querySelector('.price').classList.add('discount');
+                        //2.Add the new price
+                        let newPriceElem = document.createElement('h4');
+                        newPriceElem.textContent=newPrice + " kr.";
+                        clone.querySelector('.list-product').appendChild(newPriceElem);
+                    }
+                    console.log("#"+product.category)
+                    let section = document.querySelector("#"+product.category);
+                    section.appendChild(clone);
+                });
+                function showDetails(data){
+                    //console.log(data.name);
+                    modal.querySelector(".modal-name").textContent=data.name;
+                    modal.querySelector(".modal-description").textContent=data.longdescription;
+                    modal.querySelector(".modal-image").src=image_path+"small/"+data.image+"-sm.jpg";
+                    modal.classList.remove('hide');
+                }
+            }
+            
+		</script>
+		
+	</body>
+</html>
