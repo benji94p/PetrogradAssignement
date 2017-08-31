@@ -136,6 +136,7 @@ article {
     font-size: 18px;
     padding-bottom: 40px;
 }
+
 .name {
 
 }
@@ -145,19 +146,16 @@ article {
 }
 
 .alcohol{
-
+    display: none;
 }
 
-.allergens {
-
-}
 .soldOut {
-
+    display: none;
 }
 
 .discount {
-
+    display: none;
 }
 .vegetarian {
-
+    display: none;
 }

@@ -30,18 +30,30 @@
 
             <h1 class="menu-header">The menu</h1>
             <h2 class="menu-des">Fresh produce, quality ingredients</h2>
-            <section></section>
-            <template class="product">
+
+            <div class="cloned">
+            <section class="section1"></section>
+            <section class="section2"></section>
+            </div>
+
+            <template class="catTemplate">
+                <div class="category">
+                    <h1>Cat</h1>
+                </div>
+            </template>
+
+            <template class="productTemplate">
                <article>
                     <img class="image" src="">
                     <h1 class='name'>hi</h1>
                     <p class="shortDescription">Short Description</p>
                     <p class="price">Price</p>
                     <p class="alcohol">Alcohol</p>
-                    <p class="allergens">Allergic</p>
+
                     <p class="soldOut">Sold Out Status</p>
                     <p class="discount">Discount Price</p>
                     <p class="vegetarian">Vegetarian Status</p>
+                   <button>Details</button>
                 </article>
             </template>
             <div></div>
@@ -51,32 +63,7 @@
         </div>
 
 
-    <script>
-        let productlist_link = "http://kea-alt-del.dk/t5/api/productlist";
-        let image_path = "http://kea-alt-del.dk/t5/site/imgs/small/";
-        let templateElement = document.querySelector('.product').content;
-
-        function getData(link) {
-            fetch(link).then(function(response) {
-                return response.json();
-            }).then(function(json) {
-                return show(json);
-            });
-        }
-
-        function show(json) {
-            json.forEach(function(product) {
-                let clone = templateElement.cloneNode(true);
-                clone.querySelector('.name').textContent = product.name;
-                clone.querySelector('.price').textContent = product.price + " DKK";
-                clone.querySelector('.image').src = image_path + product.image + "-sm.jpg";
-                let section = document.querySelector('section');
-                section.appendChild(clone);
-            });
-        }
-        getData(productlist_link);
-
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
