@@ -1,0 +1,116 @@
+header,
+        nav,
+        section,
+        aside,
+        footer,
+        article {
+            border: 1px solid;
+            padding: .5em;
+        }
+header{
+    color: aliceblue;
+    font-size: 40px;
+     font-family: fantasy;
+}
+h3,h4{
+     font-family: 'Fira Sans', sans-serif;
+}
+h3{
+    font-size: 30px;
+}
+h4{
+    font-size: 20px
+}
+
+section {
+    grid-area: sec;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+
+}
+article{
+    background-color:#9a5f35;
+display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-top: 10%
+
+}
+main{
+    background-color:#331b0a;
+}
+
+
+nav a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+     padding: .5em;
+    color: aliceblue;
+}
+
+ @media (min-width: 600px) {
+main {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "hd hd hd hd"
+        "na na na na "
+        "sec sec sec sec"
+        "ft ft ft ft";
+
+}
+
+
+     .discount .price{
+         text-decoration: line-through
+     }
+
+     .hidden{
+         visibility: hidden
+     }
+
+
+header {
+    grid-area: hd;
+    font-family: fantasy;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 1em
+}
+
+nav {
+    grid-area: na;
+    display: flex;
+    flex-flow: row wrap;
+ justify-content: center;
+}
+
+nav a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+     padding: .5em;
+    color: aliceblue;
+}
+
+section {
+    grid-area: sec;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    grid-gap: 20px;
+
+
+}
+
+
+     img{
+         width:30vw
+     }
+footer {
+    grid-area: ft;
+}
+     button{
+         font-size: 22px;
+     }
+}

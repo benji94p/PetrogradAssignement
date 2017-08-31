@@ -15,7 +15,7 @@ function show(data){
         clone.querySelector('.name').textContent = element.name;
         clone.querySelector('.category').textContent = element.category;
         clone.querySelector('.price span').textContent = element.price;
-        clone.querySelector('.list-product').classList.add(element.category)
+        clone.querySelector('.list-product').classList.add(element.category);
         section.appendChild(clone);
     });
 }

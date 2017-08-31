@@ -33,8 +33,8 @@ body {
     max-height: 70px;
 }
 
-img {
-    max-width: 380px;
+section img {
+    width: 20vw;
 }
 
 /* HEROE IMAGE */
@@ -45,10 +45,10 @@ img {
 }
 
 .heroe {
-    background-image: url(Heroeimage.jpeg);
+    background-image: url(imgs/Heroeimage.jpeg);
     grid-row-start: 1;
     grid-row-end: 2;
-    height: 500px;
+    height: 600px;
     margin-bottom: 50px;
 
 }
@@ -65,11 +65,99 @@ img {
     grid-row-end: 3;
 }
 
+
+@media only screen and (max-device-width: 1024px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+
+
 /*CARDS LAYOUT */
 
-
-section {
+@media only screen and (min-device-width: 1224px) {
+    section {
+    padding-right: 30px;
+    padding-left: 30px;
     display: grid;
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    margin: 0 auto;
+    text-align: center;
+
+}
+}
+
+
+@media (max-width: 1200px) {
+    section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+section img {
+    width: 45vw;
+}
+
+}
+
+@media (max-width: 500px) {
+    section {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+section img {
+    width: 80vw;
+}
+}
+
+/*STYLE CARDS */
+
+article {
+    background-color:beige;
+}
+
+.menu-header {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+.menu-des {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    padding-bottom: 40px;
+}
+.name {
+
+}
+
+.price {
+
+}
+
+.alcohol{
+
+}
+
+.allergens {
+
+}
+.soldOut {
+
+}
+
+.discount {
+
+}
+.vegetarian {
+
 }
