@@ -5,6 +5,14 @@ let image_path = "http://kea-alt-del.dk/t5/site/imgs/small/";
 let catTemplate = document.querySelector('.catTemplate').content;
 let productTemplate = document.querySelector(".productTemplate").content;
 let cloneDiv = document.querySelector('.cloned');
+let product_link = "http://kea-alt-del.dk/t5/api/product?id=";
+let modal = document.querySelector(".modal");
+
+modal.addEventListener("click", function() {
+    modal.classList.add("hide");
+});
+
+
 
 function getCategories(catlink){
     console.log(catlink);
@@ -45,6 +53,9 @@ function getProduct(productlink){
 
 function createProduct (prod) {
     console.log(prod);
+    //MODAL
+
+
     let cloneProduct = productTemplate.cloneNode(true);
 
     //GENERIC IMPLEMENT
@@ -86,8 +97,18 @@ function createProduct (prod) {
 
     }
 
-    //VEGETERIAN STATUS
-    cloneDiv.appendChild(cloneProduct);
+
+    let ids = document.querySelector("#"+prod.category);
+    ids.appendChild(cloneProduct);
+
+
 }
 getProduct(productlist_link);
 
+function showDetails(data){
+                    //console.log(data.name);
+                    modal.querySelector(".modal-name").textContent=data.name;
+                    modal.querySelector(".modal-description").textContent=data.longdescription;
+                    modal.querySelector(".modal-image").src=image_path+"small/"+data.image+"-sm.jpg";
+                    modal.classList.remove('hide');
+                }
