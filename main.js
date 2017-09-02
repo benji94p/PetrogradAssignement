@@ -66,6 +66,21 @@ function createProduct (prod) {
 
     cloneProduct.querySelector('.price').textContent = prod.price + " kr";
 
+    let button = cloneProduct.querySelector("#btn");
+
+    button.addEventListener("click",doSmth);
+
+    function doSmth () {
+        console.log("cliked");
+         let link = product_link+prod.id;
+                         fetch(link).then(function(response){
+                        return response.json();
+                         }).then(function(json){
+                        return showDetails(json);
+                });
+    }
+
+
     //PERSONALISE
 
       //ALCOHOL
@@ -90,10 +105,10 @@ function createProduct (prod) {
         cloneProduct.querySelector(".discount").style.display ="block";
         let newPrice = prod.price - (prod.price*prod.discount/100);
         cloneProduct.querySelector(".reduction").style.display = "block";
-        cloneProduct.querySelector(".reduction").textContent = prod.discount + " %";
+        cloneProduct.querySelector(".reduction").textContent = prod.discount + " % Off";
 
         cloneProduct.querySelector('.price').classList.add("discountbar");
-        cloneProduct.querySelector('.discount').textContent = newPrice + " kr";
+        cloneProduct.querySelector('.discount').textContent = newPrice + " KR";
 
     }
 
@@ -109,6 +124,6 @@ function showDetails(data){
                     //console.log(data.name);
                     modal.querySelector(".modal-name").textContent=data.name;
                     modal.querySelector(".modal-description").textContent=data.longdescription;
-                    modal.querySelector(".modal-image").src=image_path+"small/"+data.image+"-sm.jpg";
+                    modal.querySelector(".modal-image").src=image_path+data.image+"-sm.jpg";
                     modal.classList.remove('hide');
                 }

@@ -1,7 +1,6 @@
 body {
     margin: 0;
-    height: 100%;
-    width: 100%;
+    font-family: 'Roboto', sans-serif;
 
 }
 
@@ -23,7 +22,7 @@ body {
     color: aliceblue;
     text-decoration: none;
     padding-top: 20px;
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Open Sans', sans-serif;
 }
 .navigation a:hover {
     color: aqua;
@@ -34,7 +33,7 @@ body {
 }
 
 .cloned img {
-    width: 20vw;
+    width: 10vw;
 }
 
 /* HEROE IMAGE */
@@ -48,82 +47,54 @@ body {
     background-image: url(imgs/Heroeimage.jpeg);
     grid-row-start: 1;
     grid-row-end: 2;
-    height: 600px;
+    height: 450px;
     margin-bottom: 50px;
 
 }
 
-.heroe h1 {
+.heroe h1  {
     text-align: center;
-    margin-top: 210px;
-    font-family: 'Indie Flower', cursive;
+    margin-top: 110px;
+    font-family: 'Baloo Bhaijaan', cursive;
     font-size: 60px;
+    margin-bottom: 0;
 
+}
+.heroe h2 {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
 }
 .container {
     grid-row-start: 2;
     grid-row-end: 3;
+
 }
 
-
-@media only screen and (max-device-width: 1024px) {
-    .parallax {
-        background-attachment: scroll;
-    }
-}
 
 
 /*CARDS LAYOUT */
-
-@media only screen and (min-device-width: 1224px) {
-    .cloned {
-    padding-right: 30px;
-    padding-left: 30px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    margin: 0 auto;
-    text-align: center;
-
+@media (min-width: 100px) {
+        .cloned img {
+   width: 50vw;
 }
 }
 
 
-@media (max-width: 1200px) {
-    .cloned {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-    margin: 0 auto;
-    text-align: center;
-
+@media (min-width: 600px) {
+        .cloned img {
+   width: 50vw;
 }
-
-.cloned img {
-    width: 45vw;
+    @media (min-width: 900px) {
+        .cloned img {
+   width: 30vw;
 }
-
-}
-
-@media (max-width: 500px) {
-    .cloned {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 20px;
-    margin: 0 auto;
-    text-align: center;
-
-}
-
-.cloned img {
-    width: 80vw;
-}
-}
-
+  }
 /*STYLE CARDS */
 
 article {
-    background-color:beige;
+    border: solid 15px ;
+    margin: 3em;
+    padding-bottom: 30px;
 }
 
 .menu-header {
@@ -157,12 +128,22 @@ article {
 
 .discount {
     display: none;
+    color: green
 }
 .vegetarian {
     display: none;
 }
 .reduction {
     display: none;
+    color: red;
+
+}
+#header-cat {
+    text-transform: uppercase;
+    border-bottom: solid 2px #5F0044 ;
+    width: 20%;
+    margin: 0 auto;
+    margin-bottom: 40px;
 }
 
 /* MODAL */
@@ -174,8 +155,21 @@ article {
     top: 0;
     width: 100%;
     height: 100%;
-
+    z-index: 10;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */}
 .hide {
     display: none;
+}
+
+article {
+    text-align: center;
 }
